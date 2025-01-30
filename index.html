@@ -152,7 +152,8 @@
                             href="https://docs.flutter.dev/get-started/install">https://docs.flutter.dev/get-started/install</a>
 
                         for full install guide.
-                        <br>
+                        <p>Note : Flutter version 3.24.5 has been used in this app code</p>
+
                         <br>
                         If you prefer video tutorials, we recommend this playlist for the full installation process <br>
                         <a
@@ -170,8 +171,31 @@
                         <li>If you are using Android Studio, install the flutter & dart plugin from Android Studio
                             plugin market place.
                             and if you are using VS Code you can install flutter extension.</li>
-                    </ol>
+                    </ol><br>
+                    <h3>Set JAVA Path</h3>
 
+                    <li>To avoid gradle and JAVA incompatibility issues, you can use JAVA 19.0.2 version in your system
+                    </li>
+                    <li>Download JAVA 19.0.2 and set path in the system
+                    </li>
+                    <li>If you found that there is conflict between multiple JAVA versions, you can manually mention
+                        this java version in flutter code by below code</li>
+                    <li>Open <p id="p2">android/gradle.properties</p> and add below line</li>
+                    <p class="command-style">
+                        org.gradle.java.home=/Users/payalmam/Library/Java/JavaVirtualMachines/corretto-19.0.2/Contents/Home
+                    </p>
+                    This should be path to your JAVA 19.0.2 folder. If org.gradle.java.home properties is already there
+                    in file then just change the path.
+                    <li>For MAC path will be like this</li>
+                    <p class="command-style">
+                        org.gradle.java.home=/Library/Java/JavaVirtualMachines/corretto-19.0.2/Contents/Home
+                    </p>
+
+                    <li>For Windows path will be like this</li>
+                    <p class="command-style">
+                        org.gradle.java.home=C:\\Program Files\\Java\\jdk-19.0.2</p>
+                    <p>Note: If you are using windows then you have to use 2 slashes in java path in flutter app.</p>
+                    <br>
                 </div>
             </section>
 
