@@ -62,6 +62,7 @@
                                 <li><a href='#firebaseGoogleAuthentication'>Enable Firebase Google Authentication</a>
                                 </li>
                                 <li><a href='#firebaseAppleAuthentication'>Enable Firebase Apple Authentication</a></li>
+                                <li><a href='#deeplinkSetup'>Deeplink Setup</a></li>
                                 <li><a href='#changeCountryCodeForOTP'>Change default country code for OTP</a></li>
                                 <li><a href='#runThisApp'>Run This App</a></li>
                                 <li><a href='#notificationSettings'>Notification settings</a></li>
@@ -422,13 +423,15 @@
                                 Create firebase project in your account
                             </h4>
                             <br>
-                            <img src="images/app/createFirebase1.jpg" alt="eShop Pro" />
+                            <img src="images/app/createFirebase1.png" alt="eShop Pro" />
                             <br><br>
-                            <img src="images/app/createFirebase2.jpg" alt="eShop Pro" />
+                            <img src="images/app/createFirebase2.png" alt="eShop Pro" />
                             <br><br>
-                            <img src="images/app/createFirebase3.jpg" alt="eShop Pro" />
+                            <img src="images/app/createFirebase3.png" alt="eShop Pro" />
                             <br><br>
-                            <img src="images/app/createFirebase4.jpg" alt="eShop Pro" />
+                            <img src="images/app/createFirebase4.png" alt="eShop Pro" />
+                            <br><br>
+                            <img src="images/app/createFirebase5.png" alt="eShop Pro" />
                             <br><br>
                         </li>
 
@@ -463,6 +466,13 @@
                                 </strong>
                             </h4>
 
+                        </li>
+                        <li>
+                            <p style="color:red"> Note: If you haven't created firebase apps with Firebase CLI then
+                                don't forget to change
+                                values in
+                            <p id="p2">lib/firebase_options.dart</p>
+                            </p>
                         </li>
 
                     </ol>
@@ -571,17 +581,70 @@
                     </ol>
                     <br>
                     <h3>Mandatory steps for IOS</h3>
-                    Add custom URL schemes to your Xcode project:
-                    <li>Open your project configuration: double-click the project name in the left tree view. Select
-                        your app from the TARGETS
-                        section, then select the Info tab, and expand the URL Types section.</li>
-                    <li> Click the + button, and add a URL scheme for your reversed client ID. To find this value, open
-                        theGoogleService-Info.plist configuration file, and look for the REVERSED_CLIENT_ID key. Copy
-                        the value of that key, and
-                        paste it into the URL Schemes box on the configuration page. Leave the other fields blank.</li>
-                    <li> When completed, your config should look something similar to the following (but with your
-                        application-specific values):</li><br>
-                    <img src="images/app/appleAuthentication3.png" alt="eShop Pro" /><br>
+
+                    <li>Open <p id="p2">ios/Runner/Info.plist in VScode</p>
+                    </li>
+                    <li>Add the client ID from the GoogleService-Info.plist into your app's
+                        /ios/Runner/Info.plist file.</li>
+                    <img src="images/app/apple1.png" alt="eShop Pro" /><br>
+                    <li>Then chnage the CFBundleURLTypes attributes below into the /ios/Runner/Info.plist file.
+                    </li>
+                    <img src="images/app/apple2.png" alt="eShop Pro" /><br>
+                </div>
+            </section>
+
+
+            <section class="section css-structure" id="deeplinkSetup">
+                <div class="sec-title">
+                    <span class="icon fa fa-at"></span>
+                    <h2>How to setup deeplink in app</h2>
+                </div>
+                <br>
+                <div class="sec-content">
+                    <ol>
+                        <li>First of all download this google files from the link :<a
+                                href="https://drive.google.com/drive/folders/1huTiJ6RwnETJq1arz7zVKUosoffoPvPk?usp=sharing"
+                                target="_blank">Server
+                                side deeplink files</a></li>
+                        <li>Open both files in the any text editor and follow below steps</li>
+                        <li><img src="images/app/deeplink1.png" alt="eShop Pro" /><br></li>
+                        <li><img src="images/app/deeplink2.png" alt="eShop Pro" /><br></li>
+
+                        <li>After above changes save both files (Note- Keep name proper same of both files)</li>
+                        <li>Open server > Go to admin panel root folder</li>
+                        <li>You will get <p id="p2">.well-known</p> folder on root directory</li>
+                        <li>If you dont get that folder from setting then enable setting visible hidden files then check
+                        </li>
+                        <li>After changing setting, still you don't find the files, Create new directory named
+                            <p id="p2"> .well-known </p>(Makesure name starts
+                            with dot[.])
+                        </li>
+                        <li>Add both above saved files inside the .well-known folder. and make it public</li>
+                        <li>In server > admin panel root folder you will get <p id="p2">.htaccess </p> file, Open it and
+                            paste below
+                            code in it.</li>
+
+                        <pre># 300 Redirections 
+                            
+ # Redirect for Android devices 
+ RewriteCond %{HTTP_USER_AGENT} (Android) [NC] 
+ RewriteRule ^.*/provider/.*$ https://play.google.com/store/apps/details?id=com.wrteam.eshop.pro [R=301,L] 
+ # Add more redirections here as needed... 
+ 
+ # Redirect for iPhone/iPad devices 
+ RewriteCond %{HTTP_USER_AGENT} (iPhone|iPad) [NC] 
+ RewriteRule ^.*/provider/.*$ https://testflight.apple.com/join/ZqKwNk27 [R=302,L]</pre>
+
+                        <li>
+                            <p style="color: red;">Dont forget to change customer app's play store url and apple app
+                                store url in above code with your's app.</p>
+                        </li>
+                        <li>For further steps open customer app code in android studio and follow below steps.</li>
+                        <li><img src="images/app/deeplink3.png" alt="eShop Pro" /><br></li>
+                        <li><img src="images/app/deeplink4.png" alt="eShop Pro" /><br></li>
+
+                    </ol>
+
                 </div>
             </section>
 
