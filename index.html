@@ -474,6 +474,24 @@
                             <p id="p2">lib/firebase_options.dart</p>
                             </p>
                         </li>
+                        <h3> Add SHA keys in firebase console</h3>
+                        <li>Now, we have to add sha1 and sha256 key in firebase, for that perform below given steps
+                        <li>Go to project structure and right click on android folder and select Open in terminal.</li>
+                        <img src="images/app/phoneAuthentication2.png" alt="eShop Plus" /><br><br />
+                        <h3>In terminal, run below command</h3>
+                        <li>For Windows PC</li>
+                        <p class="command-style"> gradlew signingReport </p>
+                        <li>For MAC PC</li>
+                        <p class="command-style"> ./gradlew signingReport </p>
+                        <img src="images/app/phoneAuthentication3.png" alt="eShop Plus" /><br><br>
+                        <li>Copy debug SHA1 and SHA256 and add it in firebase console</li><br>
+                        <img src="images/app/phoneAuthentication4.png" alt="eShop Plus" /><br><br>
+                        <pre>Note:<ol><li>When we are releasing apk then we need to add release sha in firebase panel otherwise otp will not work.</li>
+                        <li>after release you can get sha from play console here</li>  </pre>
+
+                        <img src="images/app/phoneAuthentication5.png" alt="eShop Plus" /><br><br>
+                    </ol>
+                    </li>
 
                     </ol>
                 </div>
@@ -515,21 +533,7 @@
                     <br><br>
                     <img src="images/app/phoneAuthentication.png" alt="eShop Plus" /><br>
                     <br />
-                    Now, we have to add sha1 and sha256 key in firebase, for that perform below given steps
-                    <li>Go to project structure and right click on android folder and select Open in terminal.</li>
-                    <img src="images/app/phoneAuthentication2.png" alt="eShop Plus" /><br><br />
-                    <h3>In terminal, run below command</h3>
-                    <li>For Windows PC</li>
-                    <p class="command-style"> gradlew signingReport </p>
-                    <li>For MAC PC</li>
-                    <p class="command-style"> ./gradlew signingReport </p>
-                    <img src="images/app/phoneAuthentication3.png" alt="eShop Plus" /><br><br>
-                    <li>Copy debug SHA1 and SHA256 and add it in firebase console</li><br>
-                    <img src="images/app/phoneAuthentication4.png" alt="eShop Plus" /><br><br>
-                    <pre>Note:<ol><li>When we are releasing apk then we need to add release sha in firebase panel otherwise otp will not work.</li>
-<li>after release you can get sha from play console here</li>  </pre>
 
-                    <img src="images/app/phoneAuthentication5.png" alt="eShop Plus" /><br><br> </ol>
                 </div>
             </section>
 
